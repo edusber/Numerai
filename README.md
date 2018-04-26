@@ -1,0 +1,2 @@
+# Numerai
+Numerai Neural Net
