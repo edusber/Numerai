@@ -11,6 +11,7 @@ import math
 import random
 import numpy as np
 import struct,string
+import argparse
 
 class EdNet:
     def __init__(self, W, W2, W3, b, b2, b3):
@@ -182,8 +183,18 @@ def net_learning(X,y,D,K): # this will take in training data (with classifiers) 
     net = EdNet(W,W2,W3,b,b2,b3)
     return net
 
-Data = get_data('data/numerai_training_data.csv',True)
-Ednet=net_learning(Data[0],Data[1],50,2)
-results = evaluate('data/numerai_tournament_data.csv',Ednet)
-print_results(results)
+def main(args):
+  Data = get_data(args.training_data, True)
+  Ednet=net_learning(Data[0], Data[1], 50, 2)
+  results = (args.tournament_data,Ednet)
+  print_resutls(results)
+  return results
 
+
+if __name__ == '__main__':
+    # Grab arguments.
+    parser = argparse.ArgumentParser(description='')
+    parser.add_argument('--training_data', type=str, required=True, help='')
+    parser.add_argument('--tournament_data', type=str, required=True, help='')
+    args = parser.parse_args()
+    main(args)
