@@ -4,9 +4,8 @@ numerai neural net
 3 layer feed-forward neural net
 - cross-entropy loss
 - relu non-linearity
-- stochastic gradient descent (mini-batch - 1000/batch)
+- stochastic gradient descent (mini-batch - 1024/batch)
+- implemented in keras using tensorflow
 
 to-do:
-- re-write using tensorflow
-- more layers
-
+- implement LSTM with era column
